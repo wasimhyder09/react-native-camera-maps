@@ -7,7 +7,9 @@ import OutlinedButton from '../UI/OutlinedButton';
 import { Colors } from '../../constants/colors';
 import { getMapPreview } from '../../util/location';
 
-function LocationPicker() {
+function LocationPicker({ onPickLocation }) {
+  const [pickedLocation, setPickedLocation] = useState();
+  const isFocued = useIsFocused();
   const navigation = useNavigation();
   const route = useRoute();
 
@@ -21,8 +23,10 @@ function LocationPicker() {
     }
   }, [route, isFocued]);
 
-  const [pickedLocation, setPickedLocation] = useState();
-  const isFocued = useIsFocused();
+  useEffect(() => {
+    onPickLocation(pickedLocation);
+  }, [pickedLocation, onPickLocation]);
+
 
   const [locationPermissionInformation, requestPermission] = useForegroundPermissions();
 
