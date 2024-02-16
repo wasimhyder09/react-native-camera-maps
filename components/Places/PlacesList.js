@@ -12,6 +12,7 @@ function PlacesList({ places }) {
     data={places}
     keyExtractor={(item) => item.id}
     renderItem={({ item }) => <PlaceItem place={item} />}
+    style={styles.list}
   />
 }
 
@@ -26,5 +27,8 @@ const styles = StyleSheet.create({
   fallbackText: {
     fontSize: 16,
     color: Colors.primary200
+  },
+  list: {
+    margin: 24
   }
 })
