@@ -9,19 +9,19 @@ import { getAddress, getMapPreview } from '../../util/location';
 
 function LocationPicker({ onPickLocation }) {
   const [pickedLocation, setPickedLocation] = useState();
-  const isFocued = useIsFocused();
+  const isFocused = useIsFocused();
   const navigation = useNavigation();
   const route = useRoute();
 
   useEffect(() => {
-    if (isFocued && route.params) {
+    if (isFocused && route.params) {
       const mapPickedLocation = {
         lat: route.params.pickedLat,
         lng: route.params.pickedLng
       };
       setPickedLocation(mapPickedLocation);
     }
-  }, [route, isFocued]);
+  }, [route, isFocused]);
 
   useEffect(() => {
     async function handleLocation() {
